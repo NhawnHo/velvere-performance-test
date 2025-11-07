@@ -13,8 +13,8 @@ jobs:
         uses: actions/checkout@v3
       - name: Install k6
         run: |
-          sudo apt-get update
-          sudo apt-get install -y k6
+          curl -s https://dl.k6.io/releases/latest/k6-v0.51.0-linux-amd64.deb -o k6.deb
+          sudo dpkg -i k6.deb
       - name: Run Backend Load Test
         run: |
           k6 run be/get_products_load_test.js
